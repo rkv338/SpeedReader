@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import {BrowserRouter as Router,
+        Routes,
+        Route,
+        Link} from 'react-router-dom';
+import FileUpload from './FileUpload';
 
 class TextUpload extends Component {
     state = {
@@ -13,12 +18,18 @@ class TextUpload extends Component {
     };
     render() {
         return (
+            <Router>
             <div className="App">
                 <form>
                   <input type="textarea" onChange={this.onTextChange} name="textValue"/>
-                  <button onClick={this.onTextUpload} type="submit">Upload</button>
+                  
+                  <Link to="/file">Submit</Link>
                 </form>
             </div>
+            <Routes>
+                <Route path="/file" element={<FileUpload/>}/>
+            </Routes>
+            </Router>
           );
     }
     
