@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router,
-        Routes,
-        Route,
-        Link} from 'react-router-dom';
 import FileUpload from './FileUpload';
+import IntervalExample from './IntervalExample';
 
 class TextUpload extends Component {
     state = {
@@ -18,18 +15,13 @@ class TextUpload extends Component {
     };
     render() {
         return (
-            <Router>
             <div className="App">
                 <form>
                   <input type="textarea" onChange={this.onTextChange} name="textValue"/>
                   
-                  <Link to="/file">Submit</Link>
+                  <IntervalExample text ={this.state.selectedText}>Submit</IntervalExample>
                 </form>
             </div>
-            <Routes>
-                <Route path="/file" element={<FileUpload/>}/>
-            </Routes>
-            </Router>
           );
     }
     

@@ -33,7 +33,7 @@ class FileUpload extends Component {
     };
     render() {
         return (
-            <div className="App">
+            <div>
                 <form>
                   <input type="file" onChange={this.onFileChange} />
                   <button onClick={this.onFileUpload} type="submit">Upload</button>
