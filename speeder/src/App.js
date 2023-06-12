@@ -8,6 +8,16 @@ function App() {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [isFlashing, setIsFlashing] = useState(false);
   const restartRef = useRef(null);
+  //var part;
+  function boldFirstHalfLetters(part) {
+    if (typeof part === 'undefined') {
+      return ' ';
+    }
+    const firstHalfIndex = Math.ceil(part.length / 2);
+    const firstHalf = part.slice(0, firstHalfIndex);
+    const secondHalf = part.slice(firstHalfIndex);
+    return <><strong>{firstHalf}</strong>{secondHalf}</>;
+  }
 
   useEffect(() => {
     const splitText = text.split(' ');
@@ -63,10 +73,11 @@ function App() {
 
   return (
     <div className="app-container">
-      <h1 className="app-title">Text Flasher</h1>
+      <h1 className="app-title">SpeedReader.io</h1>
+      <h2>For when you want to get that reading assignment over with</h2>
       <div className="flasher-container">
         <div className={`flasher ${isFlashing ? 'flash' : ''}`}>
-          {words[currentWordIndex]}
+          {boldFirstHalfLetters(words[currentWordIndex])}
         </div>
       </div>
       <div className="controls-container">
@@ -109,6 +120,7 @@ function App() {
               Start Flashing
             </button>
           )}
+          <div className='button-gap'></div>
           <button
             className="button"
             onClick={handleRestartFlashing}
